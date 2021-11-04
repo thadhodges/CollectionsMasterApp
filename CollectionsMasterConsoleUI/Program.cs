@@ -21,7 +21,7 @@ namespace CollectionsMasterConsoleUI
             
             for (int i = 0; i < intergerArray.Length; i++)
             {
-                intergerArray[i] = rnd.Next(51);
+                intergerArray[i] = rnd.Next(1,50);
             }
 
             //Print the first number of the array
@@ -47,25 +47,33 @@ namespace CollectionsMasterConsoleUI
 
             Console.WriteLine("---------REVERSE CUSTOM------------");
 
-            for (int i = 49; i >= 0 && i < intergerArray.Length; i--)
-            {
-                Console.WriteLine(i);
-            }
+            //for (int i = 49; i >= 0 && i < intergerArray.Length; i--)
+            //{
+            //    Console.WriteLine(i);
+            //}
 
             Console.WriteLine("-------------------");
 
             //Create a method that will set numbers that are a multiple of 3 to zero then print to the console all numbers
             Console.WriteLine("Multiple of three = 0: ");
 
-            //foreach (int num in intergerArray)
+            Console.WriteLine(ThreeKiller(intergerArray));
 
-            //{
-            //    while (num % 3 == 0)
-                    {
-                    //intergerArray.SetValue(0, index);
-                    }
+            foreach (int num in intergerArray)
+
+            {
+                if (num % 3 == 0)
+                {
+                    Console.WriteLine(0);                    
+                    
+                }
+                else
+                {
+                    Console.WriteLine(num);
+                }
+               
             }
-
+            
 
             
 
@@ -74,6 +82,9 @@ namespace CollectionsMasterConsoleUI
             //Sort the array in order now
             /*      Hint: Array.____()      */
             Console.WriteLine("Sorted numbers:");
+
+            Array.Sort(intergerArray);
+            NumberPrinter(intergerArray);
             
 
             Console.WriteLine("\n************End Arrays*************** \n");
@@ -84,15 +95,24 @@ namespace CollectionsMasterConsoleUI
 
             /*   Set Up   */
             //Create an integer List
-            
+            var intList = new List<int>();
+
 
             //Print the capacity of the list to the console
-            
+
+            Console.WriteLine(intList.Count);
+
 
             //Populate the List with 50 random numbers between 0 and 50 you will need a method for this            
-            
+            var newRandom = new Random();
+
+            for (int i = 0; i < 50; i++)
+            {
+                intList.Add(newRandom.Next(0, 50));
+            }
 
             //Print the new capacity
+            Console.WriteLine(intList.Count);
             
 
             Console.WriteLine("---------------------");
@@ -100,41 +120,103 @@ namespace CollectionsMasterConsoleUI
             //Create a method that prints if a user number is present in the list
             //Remember: What if the user types "abc" accident your app should handle that!
             Console.WriteLine("What number will you search for in the number list?");
+            Console.WriteLine("Select a whole positive integer between 0 and 50");
+            int input = int.Parse(Console.ReadLine());
+
+            
+             
+            if (intList.Contains(input))
+                {
+                    Console.WriteLine($"Your number is in the list!!!!");
+                }
+                    if (intList.Contains(input) == false)
+                        {
+                            Console.WriteLine($"Your number is not on the list!!!");
+                        }
+                            //else
+                            //{
+                            //    Console.WriteLine($"Sorry, your input is not valid");
+                            //}
+            
+
             
             Console.WriteLine("-------------------");
 
             Console.WriteLine("All Numbers:");
             //Print all numbers in the list
-            //NumberPrinter();
+            NumberPrinter(intList);
             Console.WriteLine("-------------------");
 
             //Create a method that will remove all odd numbers from the list then print results
             Console.WriteLine("Evens Only!!");
-            
+
+            for (int i = 0; i < intList.Count; i++)
+            {
+                int num = intList[i];
+                if (num % 2 != 0)
+                {
+                    intList.Remove(num);
+                }
+                else
+                {
+                    Console.WriteLine(num);
+                }
+            }
             Console.WriteLine("------------------");
 
             //Sort the list then print results
             Console.WriteLine("Sorted Evens!!");
+
+            intList.Sort();
+            NumberPrinter(intList);
             
             Console.WriteLine("------------------");
 
             //Convert the list to an array and store that into a variable
-            
+            int[] newArray = intList.ToArray();
+            NumberPrinter(newArray);
 
             //Clear the list
-            
+            intList.Clear();
+            Console.WriteLine(intList.Count);
 
             #endregion
         }
 
         private static void ThreeKiller(int[] numbers)
         {
-            
+            foreach (int num in numbers)
+            {
+                if (num % 3 == 0)
+                {
+                    Console.WriteLine(0);
+                }
+                Console.WriteLine(num);
+            }
+        }
+
+        private static void ThreeKiller(List<int> numbersList)
+        {
+            foreach (int num in numbersList)
+            {
+                if (num % 3 == 0)
+                {
+                    Console.WriteLine(0);
+                }
+                Console.WriteLine(num);
+            }
         }
 
         private static void OddKiller(List<int> numberList)
         {
-            
+            foreach (int num in numberList)
+            {
+                if (num % 2 == 0)
+                {
+                    Console.WriteLine(num);
+                }
+                Console.WriteLine(0);
+            }
         }
 
         private static void NumberChecker(List<int> numberList, int searchNumber)
