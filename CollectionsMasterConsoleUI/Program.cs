@@ -13,32 +13,60 @@ namespace CollectionsMasterConsoleUI
 
             #region Arrays
             // Create an integer Array of size 50
-            
+            var intergerArray = new int[50];
+
 
             //Create a method to populate the number array with 50 random numbers that are between 0 and 50
+            var rnd = new Random();
             
+            for (int i = 0; i < intergerArray.Length; i++)
+            {
+                intergerArray[i] = rnd.Next(51);
+            }
 
             //Print the first number of the array
 
-            //Print the last number of the array            
+            Console.WriteLine(intergerArray[0]);
+
+            //Print the last number of the array
+            //
+            Console.WriteLine(intergerArray[49]);
 
             Console.WriteLine("All Numbers Original");
             //Use this method to print out your numbers from arrays or lists
-            //NumberPrinter();
+            NumberPrinter(intergerArray);
             Console.WriteLine("-------------------");
 
             //Reverse the contents of the array and then print the array out to the console.
             //Try for 2 different ways
             /*     Hint: Array._____(); Create a custom method     */
+            Array.Reverse(intergerArray);
+            NumberPrinter(intergerArray);
 
             Console.WriteLine("All Numbers Reversed:");
 
             Console.WriteLine("---------REVERSE CUSTOM------------");
 
+            for (int i = 49; i >= 0 && i < intergerArray.Length; i--)
+            {
+                Console.WriteLine(i);
+            }
+
             Console.WriteLine("-------------------");
 
             //Create a method that will set numbers that are a multiple of 3 to zero then print to the console all numbers
             Console.WriteLine("Multiple of three = 0: ");
+
+            //foreach (int num in intergerArray)
+
+            //{
+            //    while (num % 3 == 0)
+                    {
+                    //intergerArray.SetValue(0, index);
+                    }
+            }
+
+
             
 
             Console.WriteLine("-------------------");
